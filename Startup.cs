@@ -32,7 +32,7 @@ namespace ManagmentApplication
             {
                 endpoints.MapGet("/", async context =>
                 {
-                    await context.Response.WriteAsync("Hello World second Change");
+                    await context.Response.WriteAsync("Hello World second    Change");
                 });
             });
         }
