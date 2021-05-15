@@ -12,8 +12,10 @@
       "commandName": "IISExpress",
       "launchBrowser": true,
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "MyKey": "Value of MyKey from ASPNETCORE_ENVIRONMENT json"
       }
+      
     },
     "ManagmentApplication": {
       "commandName": "Project",
