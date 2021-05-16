@@ -64,6 +64,13 @@ namespace ManagmentApplication
             //});
             #endregion
 
+
+            // Add UseFileServer file Middleware and replaceing the UseDefaultFiles() and UseStaticFiles()
+            FileServerOptions fileServerOption = new FileServerOptions();
+            fileServerOption.DefaultFilesOptions.DefaultFileNames.Clear();
+            fileServerOption.DefaultFilesOptions.DefaultFileNames.Add("Html/foo.html");
+            app.UseFileServer(fileServerOption);
+
             // Add default Files Middleware   
             DefaultFilesOptions defaultFilesOptions = new DefaultFilesOptions();
             defaultFilesOptions.DefaultFileNames.Clear();
