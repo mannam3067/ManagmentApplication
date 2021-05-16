@@ -71,6 +71,7 @@ namespace ManagmentApplication
             fileServerOption.DefaultFilesOptions.DefaultFileNames.Add("Html/foo.html");
             app.UseFileServer(fileServerOption);
 
+            //very importent note add UseDefaultFiles middleware must be before to UseStaticFiles
             // Add default Files Middleware   
             DefaultFilesOptions defaultFilesOptions = new DefaultFilesOptions();
             defaultFilesOptions.DefaultFileNames.Clear();
