@@ -36,14 +36,27 @@ namespace ManagmentApplication
 
             app.UseRouting();
 
-            app.UseEndpoints(endpoints =>
+            //app.UseEndpoints(endpoints =>
+            //{
+            //    endpoints.MapGet("/", async context =>
+            //    {
+            //        //System.Diagnostics.Process.GetCurrentProcess().ProcessName
+            //        await context.Response.WriteAsync(_config["MyKey"]);
+            //        
+            //    });
+            //});
+
+            app.Use(async (context,next) =>
             {
-                endpoints.MapGet("/", async context =>
-                {
-                    //System.Diagnostics.Process.GetCurrentProcess().ProcessName
-                    await context.Response.WriteAsync(_config["MyKey"]);
-                });
+                await context.Response.WriteAsync("Hello from 1st Middleware");
+                await next();
             });
+
+            app.Run(async (context) =>
+            {
+                await context.Response.WriteAsync("Hello from 2nd Middleware");
+            });
+
         }
     }
 }
