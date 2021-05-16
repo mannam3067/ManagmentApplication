@@ -64,7 +64,12 @@ namespace ManagmentApplication
             //});
             #endregion
 
-            // Add Static Files Middleware
+            // Add default Files Middleware   
+            DefaultFilesOptions defaultFilesOptions = new DefaultFilesOptions();
+            defaultFilesOptions.DefaultFileNames.Clear();
+            defaultFilesOptions.DefaultFileNames.Add("Html/Default.html");
+            app.UseDefaultFiles(defaultFilesOptions);
+            // Add Static Files Middleware            
             app.UseStaticFiles();
 
             app.Run(async (context) =>
