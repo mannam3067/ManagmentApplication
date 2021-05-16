@@ -6,7 +6,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\" />
+    <Folder Include="wwwroot\JS\" />
+    <Folder Include="wwwroot\CSS\" />
+    <Folder Include="wwwroot\Images\" />
   </ItemGroup>
 
 </Project>

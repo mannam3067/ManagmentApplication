@@ -36,7 +36,7 @@ namespace ManagmentApplication
             }
 
             app.UseRouting();
-
+            #region commentedcode
             //app.UseEndpoints(endpoints =>
             //{
             //    endpoints.MapGet("/", async context =>
@@ -47,26 +47,32 @@ namespace ManagmentApplication
             //    });
             //});
 
-            app.Use(async (context,next) =>
-            {
-                //await context.Response.WriteAsync("Hello from 1st Middleware");
-                logger.LogInformation("MW1: Incoming Request");               
-                await next();
-                logger.LogInformation("MW1: Outgoing Request");
-            });
-                
-            app.Use(async (context, next) =>
-            {
-                //await context.Response.WriteAsync("Hello from 1st Middleware");
-                logger.LogInformation("MW1: Incoming Request");
-                await next();
-                logger.LogInformation("MW1: Outgoing Request");
-            });
+            //app.Use(async (context,next) =>
+            //{
+            //    //await context.Response.WriteAsync("Hello from 1st Middleware");
+            //    logger.LogInformation("MW1: Incoming Request");               
+            //    await next();
+            //    logger.LogInformation("MW1: Outgoing Request");
+            //});
+
+            //app.Use(async (context, next) =>
+            //{
+            //    //await context.Response.WriteAsync("Hello from 1st Middleware");
+            //    logger.LogInformation("MW1: Incoming Request");
+            //    await next();
+            //    logger.LogInformation("MW1: Outgoing Request");
+            //});
+            #endregion
+
+            // Add Static Files Middleware
+            app.UseStaticFiles();
+
             app.Run(async (context) =>
             {
                 //await context.Response.WriteAsync("Hello from 2nd Middleware");
-                await context.Response.WriteAsync("MW3: Request handled and response produced");
-                logger.LogInformation("MW3: Request handled and response produced");
+                //logger.LogInformation("MW3: Request handled and response produced");
+                await context.Response.WriteAsync("Hello World");
+                
 
             });
 
