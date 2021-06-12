@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using ManagmentApplication.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -9,7 +6,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-
 namespace ManagmentApplication
 {
     public class Startup
@@ -25,6 +21,12 @@ namespace ManagmentApplication
         }
         public void ConfigureServices(IServiceCollection services)
         {
+            // here we need to add the EnableEndpointRouting = false otherwise we get the error
+            services.AddMvc(option => option.EnableEndpointRouting = false);
+            //services.AddMvcCore(option => option.EnableEndpointRouting = false);
+            //Configured model classes in services
+            services.AddSingleton<IEmployeeRepository, MockEmployeeRepository>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -79,7 +81,8 @@ namespace ManagmentApplication
             app.UseDefaultFiles(defaultFilesOptions);
             // Add Static Files Middleware            
             app.UseStaticFiles();
-
+            //Added Mvc MiddleWare
+            app.UseMvcWithDefaultRoute();
             app.Run(async (context) =>
             {
                 //await context.Response.WriteAsync("Hello from 2nd Middleware");
