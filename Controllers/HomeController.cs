@@ -71,10 +71,24 @@ namespace ManagmentApplication.Controllers
         #region Passdatafromcontroller to view 
         public ViewResult SampleViewData()
         {
+            // Pass PageTitle and Employee model to the View using ViewData
             Employee model = _employeeRepository.GetEmployee(1);
-            
+
             ViewData["PageTitle"] = "pass data from controller to View using viewdata";
             ViewData["Employee"] = model;
+            return View();
+        }
+
+        public ViewResult SampleViewBag()
+        {
+
+            // To store the page title and empoyee model object in the 
+            // ViewBag we are using dynamic properties PageTitle and Employee
+
+            Employee model = _employeeRepository.GetEmployee(1);
+
+            ViewBag.PageTitle = "pass data from controller to View using viewBag";
+            ViewBag.EmployeeModel = model;
             return View();
         }
         #endregion
