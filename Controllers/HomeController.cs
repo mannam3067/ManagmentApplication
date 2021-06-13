@@ -12,6 +12,7 @@ namespace ManagmentApplication.Controllers
         {
             _employeeRepository = employeeRepository;
         }
+
         #region Return Generaldatatype        
         // return employee name and return
         public string Index()
@@ -39,6 +40,42 @@ namespace ManagmentApplication.Controllers
         public JsonResult IndexJson()
         {
             return Json(new { id = 1, Name = "mallikharjuna" });
+        }
+        #endregion
+
+        #region Customizeviewdiscovery
+        //If we do not like this default convention, we can use the overloaded version of the View(string viewName) method, 
+        //that takes viewName as a parameter, to look for a view file with your own custom name.
+        public ViewResult TestDetailsOne()
+        {
+            return View("Test");
+        }
+
+        //Specifying view file path
+        public ViewResult TestDetailsTwo()
+        {
+            return View("/MyViews/Test.cshtml");
+        }
+
+        //Relative View File Path (relative path we do not specify the file extension .cshtml.)
+        public ViewResult Testdetailsthree()
+        {
+            return View("../Test/Update");
+        }
+        public ViewResult TestdetailsFour()
+        {
+            return View("../../MyViews/Test");
+        }
+        #endregion
+
+        #region Passdatafromcontroller to view 
+        public ViewResult SampleViewData()
+        {
+            Employee model = _employeeRepository.GetEmployee(1);
+            
+            ViewData["PageTitle"] = "pass data from controller to View using viewdata";
+            ViewData["Employee"] = model;
+            return View();
         }
         #endregion
 

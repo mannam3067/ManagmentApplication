@@ -1,0 +1,16 @@
+﻿<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <h3> Specifying view file path MyViews/Test.cshtml</h3>
+    <p>With this overloaded version, we can either specify a view name or a view file path. In the following example, we specified the absolute view file path. So in this case, MVC looks for a view file with name "Test.cshtml" in "MyViews" folder. Had we not specified the path to the view file, by default, MVC would look for "Details.cshtml" file in "Views/Home" folder. With the absolute path, the .cshtml extension must be specified.</p>
+    <p>
+        Please note : With the absolute path, to get to the root project directory, we can use / or ~/. So the following 3 lines of code does the same thing
+
+        <div>return View("MyViews/Test.cshtml");</div>
+        <div>return View("/MyViews/Test.cshtml");</div>
+        <div>return View("~/MyViews/Test.cshtml");</div>
+    </p>
+</body>
+</html>
