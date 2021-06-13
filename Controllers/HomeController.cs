@@ -93,5 +93,16 @@ namespace ManagmentApplication.Controllers
         }
         #endregion
 
+        #region Strongly Typed View 
+
+        public ViewResult StronglyTypedView()
+        {
+            Employee model = _employeeRepository.GetEmployee(1);
+
+            ViewBag.PageTitle= "pass data from controller to View using StronglyTypedView";
+            return View(model);
+        }
+        #endregion
+
     }
 }
