@@ -20,6 +20,11 @@ namespace ManagmentApplication.Models
         };
         }
 
+        public IEnumerable<Employee> GetAllEmployee()
+        {
+            return this._employeeList;
+        }
+
         public Employee GetEmployee(int Id)
         {
             return this._employeeList.Where(e => e.Id == Id).FirstOrDefault();

@@ -1,6 +1,7 @@
 ﻿using ManagmentApplication.Models;
 using ManagmentApplication.ViewModel;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace ManagmentApplication.Controllers
 {
@@ -16,9 +17,10 @@ namespace ManagmentApplication.Controllers
 
         #region Return Generaldatatype        
         // return employee name and return
-        public string Index()
+        public ViewResult Index()
         {
-            return _employeeRepository.GetEmployee(1).Name;
+            IEnumerable<Employee> employeeModel= _employeeRepository.GetAllEmployee();
+            return View(employeeModel);
         }
         // return string content 
         public string Indexstirng()
