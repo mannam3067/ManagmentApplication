@@ -1,8 +1,11 @@
-﻿<html xmlns="http://www.w3.org/1999/xhtml">
+﻿@model ManagmentApplication.ViewModel.HomeDetailsViewModel
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title></title>
+    <title>@Model.PageTitle</title>
 </head>
 <body>
-    <h3>Details view</h3>
+    <div>Name:@Model.employeeDetails.Name</div>
+    <div>Email:@Model.employeeDetails.Email</div>
+    <div>DepartMent:@Model.employeeDetails.Department</div>
 </body>
 </html>

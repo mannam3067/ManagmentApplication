@@ -1,4 +1,5 @@
 ﻿using ManagmentApplication.Models;
+using ManagmentApplication.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ManagmentApplication.Controllers
@@ -32,8 +33,12 @@ namespace ManagmentApplication.Controllers
         // return employee details using employee id
         public ViewResult Details(int id)
         {
-            Employee employee = _employeeRepository.GetEmployee(id);
-            return View();
+            HomeDetailsViewModel homeDetailsViewModel = new HomeDetailsViewModel()
+            {
+                employeeDetails = _employeeRepository.GetEmployee(id),
+                PageTitle = "Employee Details"
+            };
+            return View(homeDetailsViewModel);
         }
 
         // return employee details using Json return type
@@ -99,7 +104,7 @@ namespace ManagmentApplication.Controllers
         {
             Employee model = _employeeRepository.GetEmployee(1);
 
-            ViewBag.PageTitle= "pass data from controller to View using StronglyTypedView";
+            ViewBag.PageTitle = "pass data from controller to View using StronglyTypedView";
             return View(model);
         }
         #endregion
