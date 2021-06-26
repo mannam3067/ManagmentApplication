@@ -9,5 +9,22 @@
     <div>
         @RenderBody()
     </div>
+    @*If the custom script file is required by all the views then we could place it in the Layout page as shown below.
+    <script src="~/JS/CustomScript.js"></script>*@
+
+    @*//Case1  Making the layout section manadatory mean at this moment we should add the @section Scripts { on particular view*@
+    @*@RenderSection("Scripts", required: true)*@
+
+    @*In the layout page, call RenderSection() method at the location where you want the section content to be rendered.*@
+    @*Making the layout section optional*@
+    @*Case2*@ @*//used this one sncl project also*@
+    @RenderSection("Scripts", required: false)
+    
+    @*Case3*@
+    @*@if (IsSectionDefined("Scripts"))
+    {
+    @RenderSection("Scripts", required: false)
+    }*@
+
 </body>
 </html>
