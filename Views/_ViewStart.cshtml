@@ -1,0 +1,22 @@
+﻿@*@{
+        Layout = "_Layout";
+    }*@
+
+    @*We use the Layout property to associate a view with a layout view.
+        Without the _ViewStart.cshtml file, we set the Layout property in each and every view.
+        To use a different layout file, all the individual views need to be updated
+        It's a special file in ASP.NET Core MVC. 
+        The code in this file is executed before the code in an individual view is executed
+    *@
+
+@{
+    if (User.IsInRole("Admin"))
+    {
+        Layout = "_Layout";
+    }
+    else
+    {
+        Layout = "_NonAdminLayout";
+    }
+}
+
