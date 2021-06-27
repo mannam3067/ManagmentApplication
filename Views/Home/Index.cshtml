@@ -26,13 +26,13 @@
                 </div>
                 <div class="card-footer text-center">
                     @*//Normal tag helper*@
-                    <a href="/home/details/@item.Id" class="btn btn-primary">Back</a>
+                    <a href="/home/details/@item.Id" class="btn btn-primary m-1">Back</a>
                     @*//mvc html taghelper*@
-                    <a href="@Url.Action("details", "Home", new { item.Id })" class="btn btn-primary">Edit</a>
-                    <div>@Html.ActionLink("Actionlink","details","Home",new { id = item.Id })</div>
+                    @*<a href="@Url.Action("details", "Home", new { item.Id })" class="btn btn-primary">Edit</a>
+                    <div>@Html.ActionLink("Actionlink","details","Home",new { id = item.Id })</div>*@
                     @*//server side tag helper*@
-                    <a asp-controller="Home" asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary">TagHelper</a>
-                    <a href="#" class="btn btn-danger">Delete</a>
+                    <a asp-controller="Home" asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary m-2">TagHelper</a>
+                    <a href="#" class="btn btn-danger m-3">Delete</a>
                 </div>
                 
             </div>
