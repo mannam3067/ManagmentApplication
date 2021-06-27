@@ -17,6 +17,11 @@ namespace ManagmentApplication.Controllers
 
         #region Return Generaldatatype        
         // return employee name and return
+        //attribute routing
+        //[Route("")]
+        //[Route("Home")]
+        //Tokens in Attribute Routing
+        //[Route("[Controller]/[action]")]
         public ViewResult Index()
         {
             IEnumerable<Employee> employeeModel= _employeeRepository.GetAllEmployee();
@@ -33,11 +38,15 @@ namespace ManagmentApplication.Controllers
 
 
         // return employee details using employee id
-        public ViewResult Details(int id)
+        // The ? makes id route parameter optional. To make it required remove ?
+        //[Route("Home/Details/{id?}")]
+        // ? makes id method parameter nullable       
+        public ViewResult Details(int? id)
         {
             HomeDetailsViewModel homeDetailsViewModel = new HomeDetailsViewModel()
             {
-                employeeDetails = _employeeRepository.GetEmployee(id),
+                // If "id" is null use 1, else use the value passed from the route
+                employeeDetails = _employeeRepository.GetEmployee(id??1),
                 PageTitle = "Employee Details"
             };
             return View(homeDetailsViewModel);

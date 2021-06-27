@@ -82,13 +82,14 @@ namespace ManagmentApplication
             // Add Static Files Middleware            
             app.UseStaticFiles();
             //Added Mvc MiddleWare
-            app.UseMvcWithDefaultRoute();
+            //app.UseMvcWithDefaultRoute();
+            app.UseMvc();
             app.Run(async (context) =>
             {
                 //await context.Response.WriteAsync("Hello from 2nd Middleware");
                 //logger.LogInformation("MW3: Request handled and response produced");
                 await context.Response.WriteAsync("Hello World");
-                
+
 
             });
 
