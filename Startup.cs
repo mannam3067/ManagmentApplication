@@ -68,17 +68,17 @@ namespace ManagmentApplication
 
 
             // Add UseFileServer file Middleware and replaceing the UseDefaultFiles() and UseStaticFiles()
-            FileServerOptions fileServerOption = new FileServerOptions();
-            fileServerOption.DefaultFilesOptions.DefaultFileNames.Clear();
-            fileServerOption.DefaultFilesOptions.DefaultFileNames.Add("Html/foo.html");
-            app.UseFileServer(fileServerOption);
+            //FileServerOptions fileServerOption = new FileServerOptions();
+            //fileServerOption.DefaultFilesOptions.DefaultFileNames.Clear();
+            //fileServerOption.DefaultFilesOptions.DefaultFileNames.Add("Html/foo.html");
+            app.UseFileServer();  //fileServerOption
 
             //very importent note add UseDefaultFiles middleware must be before to UseStaticFiles
             // Add default Files Middleware   
-            DefaultFilesOptions defaultFilesOptions = new DefaultFilesOptions();
-            defaultFilesOptions.DefaultFileNames.Clear();
-            defaultFilesOptions.DefaultFileNames.Add("Html/Default.html");
-            app.UseDefaultFiles(defaultFilesOptions);
+            //DefaultFilesOptions defaultFilesOptions = new DefaultFilesOptions();
+            //defaultFilesOptions.DefaultFileNames.Clear();
+            //defaultFilesOptions.DefaultFileNames.Add("Html/Default.html");
+            app.UseDefaultFiles(); //defaultFilesOptions
             // Add Static Files Middleware            
             app.UseStaticFiles();
             //Added Mvc MiddleWare
