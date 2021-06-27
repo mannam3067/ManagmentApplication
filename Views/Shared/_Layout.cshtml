@@ -4,7 +4,21 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     @*Added bootstrp file here*@
-    <link href="~/lib/twitter-bootstrap/css/bootstrap.css" rel="stylesheet" />
+    @*adding environment tag helper to load the minified and non-minified files based on environment*@
+    <environment include="Development">
+        <link href="~/lib/twitter-bootstrap/css/bootstrap.css" rel="stylesheet" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet"
+              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+              crossorigin="anonymous"
+              href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/twitter-bootstrap/css/bootstrap.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position"
+              asp-fallback-test-value="absolute"
+              asp-suppress-fallback-integrity="true" />
+
+    </environment>
     <link href="~/CSS/site.css" rel="stylesheet" />
     <title>@ViewBag.Title</title>
 </head>
@@ -13,7 +27,7 @@
         @RenderBody()
     </div>
     @*If the custom script file is required by all the views then we could place it in the Layout page as shown below.
-    <script src="~/JS/CustomScript.js"></script>*@
+        <script src="~/JS/CustomScript.js"></script>*@
 
     @*//Case1  Making the layout section manadatory mean at this moment we should add the @section Scripts { on particular view*@
     @*@RenderSection("Scripts", required: true)*@
@@ -22,12 +36,12 @@
     @*Making the layout section optional*@
     @*Case2*@ @*//used this one sncl project also*@
     @RenderSection("Scripts", required: false)
-    
+
     @*Case3*@
     @*@if (IsSectionDefined("Scripts"))
-    {
-    @RenderSection("Scripts", required: false)
-    }*@
+        {
+        @RenderSection("Scripts", required: false)
+        }*@
 
 </body>
 </html>
