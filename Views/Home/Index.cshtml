@@ -17,7 +17,7 @@
                 </div>
 
                 <div class="card-body text-center">
-                    <img class="card-img-top" src="~/Images/Image0.jpg" />
+                    <img class="card-img-top" src="~/Images/image1.jpg" asp-append-version="true" height="30" width="30"/>
 
                     <h4>Employee ID : @item.Id</h4>
                     <h4>Email : @item.Email</h4>
@@ -25,8 +25,13 @@
 
                 </div>
                 <div class="card-footer text-center">
-                    <a href="#" class="btn btn-primary">Back</a>
-                    <a href="#" class="btn btn-primary">Edit</a>
+                    @*//Normal tag helper*@
+                    <a href="/home/details/@item.Id" class="btn btn-primary">Back</a>
+                    @*//mvc html taghelper*@
+                    <a href="@Url.Action("details", "Home", new { item.Id })" class="btn btn-primary">Edit</a>
+                    <div>@Html.ActionLink("Actionlink","details","Home",new { id = item.Id })</div>
+                    @*//server side tag helper*@
+                    <a asp-controller="Home" asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary">TagHelper</a>
                     <a href="#" class="btn btn-danger">Delete</a>
                 </div>
                 
@@ -50,7 +55,7 @@
             </tr>
         </thead>
         @foreach (var item in Model)
-        {
+                    {
             <tr>
                 <td>@item.Name</td>
                 <td>@item.Email</td>
