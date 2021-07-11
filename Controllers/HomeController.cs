@@ -57,6 +57,22 @@ namespace ManagmentApplication.Controllers
         {
             return Json(new { id = 1, Name = "mallikharjuna" });
         }
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(Employee model)
+        {
+            if (ModelState.IsValid)
+            {
+                Employee newEmployee = _employeeRepository.Add(model);
+                return RedirectToAction("Details", new { id = newEmployee.Id });
+            }
+            return View();
+        }
         #endregion
 
         #region Customizeviewdiscovery
