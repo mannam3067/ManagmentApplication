@@ -2,6 +2,7 @@ using ManagmentApplication.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -21,6 +22,8 @@ namespace ManagmentApplication
         }
         public void ConfigureServices(IServiceCollection services)
         {
+            //configuring the dbcontext class
+            services.AddDbContextPool<AppDbContext>(option=>option.UseSqlServer(_config.GetConnectionString("EmployeeDBConnection")));
             // here we need to add the EnableEndpointRouting = false otherwise we get the error
             services.AddMvc(option => option.EnableEndpointRouting = false);
             //services.AddMvcCore(option => option.EnableEndpointRouting = false);
