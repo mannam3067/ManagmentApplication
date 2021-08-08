@@ -28,7 +28,7 @@ namespace ManagmentApplication
             services.AddMvc(option => option.EnableEndpointRouting = false);
             //services.AddMvcCore(option => option.EnableEndpointRouting = false);
             //Configured model classes in services
-            services.AddSingleton<IEmployeeRepository, MockEmployeeRepository>();
+            services.AddScoped<IEmployeeRepository, SqlEmployeeRepository>();
 
         }
 
