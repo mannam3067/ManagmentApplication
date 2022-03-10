@@ -24,7 +24,7 @@ namespace ManagmentApplication.Controllers
         //[Route("[Controller]/[action]")]
         public ViewResult Index()
         {
-            IEnumerable<Employee> employeeModel= _employeeRepository.GetAllEmployee();
+            IEnumerable<Employee> employeeModel = _employeeRepository.GetAllEmployee();
             return View(employeeModel);
         }
         // return string content 
@@ -46,7 +46,7 @@ namespace ManagmentApplication.Controllers
             HomeDetailsViewModel homeDetailsViewModel = new HomeDetailsViewModel()
             {
                 // If "id" is null use 1, else use the value passed from the route
-                employeeDetails = _employeeRepository.GetEmployee(id??1),
+                employeeDetails = _employeeRepository.GetEmployee(id ?? 1),
                 PageTitle = "Employee Details"
             };
             return View(homeDetailsViewModel);

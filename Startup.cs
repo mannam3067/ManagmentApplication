@@ -23,7 +23,7 @@ namespace ManagmentApplication
         public void ConfigureServices(IServiceCollection services)
         {
             //configuring the dbcontext class
-            services.AddDbContextPool<AppDbContext>(option=>option.UseSqlServer(_config.GetConnectionString("EmployeeDBConnection")));
+            services.AddDbContextPool<AppDbContext>(option => option.UseSqlServer(_config.GetConnectionString("EmployeeDBConnection")));
             // here we need to add the EnableEndpointRouting = false otherwise we get the error
             services.AddMvc(option => option.EnableEndpointRouting = false);
             //services.AddMvcCore(option => option.EnableEndpointRouting = false);
@@ -33,7 +33,7 @@ namespace ManagmentApplication
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env,ILogger<Startup> logger)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILogger<Startup> logger)
         {
             if (env.IsDevelopment())
             {
